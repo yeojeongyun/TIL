@@ -85,3 +85,5 @@ git remote add orgin /주소 (주소의 별명이 orgin으로 설정)
 git push (원격저장소로 업로드 됨)
 
 git log (commit 전달 내용 확인 가능)
+
+test
