@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        console.log(React);
+        console.log(ReactDOM);
+
+        // function Component() {
+        //     return(
+        //         <div><button onClick={() => {
+        //             console.log("clicked");
+        //         }}
+        //         >클릭</button></div>
+        //     );
+        // }
+
+        // class Component extends React.Component {
+        //     state = {
+        //         count: 0,
+        //     };
+        //     render() {
+        //         return(
+        //         <div>
+        //             <p>{this.state.count}</p>
+        //             <button 
+        //                 onClick={() => {
+                            
+        //                 }}
+        //             >클릭</button></div>
+        //         );    
+        //     }
+
+        //     click = () => {
+        //         console.log("clicked");
+        //         this.setState((state) => ({
+        //             ...state, 
+        //             count: state.count + 1,
+        //         }));
+        //     }
+        // }
+
+
+        // ReactDOM.render(<Component />, document.querySelector("#root"));
+
+        class App extends React.Component {
+            state = {
+                age: 39, 
+            };
+            constructor(props) {
+                super(props);
+
+                console.log("constructor", props);
+            }
+            render(){
+                console.log("render");
+                return (
+                    <div>
+                        <h2>
+                            Hello {this.props.name} - {this.state.age}
+                        </h2>
+                    </div>
+                );
+            }
+            componentWillMount() {
+                console.log("componentWillMount");
+            }
+            componentDidMount() {
+                console.log("componentDidMount");
+
+
+                setInterval(() => {
+                    console.log("setInterval");
+                    this.setState(state => ({...state, age: state.age + 1 }));
+                }, 1000);
+            }
+
+            componentWillReceiveProps(nextProps) {
+                console.log("componentWillReceiveProps", nextProps);
+            }
+
+            shouldComponentUpdate(nextProps, nextState) {
+                cosole.log("shouldComponentUpdate", nextProps, nextState);
+                return True;
+            }
+
+            componentWillUpdate(nextProps, nextState) {
+                cosole.log("componentWillUpdate", nextProps, nextState);
+            }
+
+            componentDidUpdate(prevProps, prevState) {
+                cosole.log("componentDidUpdate", prevProps, prevState);
+            }
+        }
+        ReactDOM.render(<App name="Mark" />, document.querySelector("#root"));
+
+
+
+    </script>    
+</body>
+</html>
